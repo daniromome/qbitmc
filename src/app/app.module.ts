@@ -19,6 +19,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ApplicationFormComponent } from './application-form/application-form.component';
 import { RulesComponent } from './rules/rules.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { WipComponent } from './wip/wip.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     AboutUsComponent,
     ApplicationFormComponent,
     RulesComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    WipComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
