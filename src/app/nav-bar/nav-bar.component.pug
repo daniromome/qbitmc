@@ -1,2 +1,8 @@
-img(src="assets/rainbow.png")
-button(mat-flat-button) Hola
+a('[routerLink]'='["/"]')
+  div(class="container")
+    img(src="assets/rainbow.png")
+    span(class="title") QbitMC
+div(class="container")
+  button(mat-flat-button color="primary" '[routerLink]'='["/about-us"]') About us
+  button(mat-flat-button color="primary" '(click)'="openDialog()") Apply
+  button(mat-flat-button color="primary") Log In
