@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(ApplicationFormComponent, {
-      height: '49em',
+      height: '51em',
       width: '42em',
       // height: '400px',
       // width: '540px',
