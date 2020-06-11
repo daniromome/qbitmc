@@ -36,7 +36,7 @@ form('[formGroup]'='applicationForm')
         div(class='buttons')
           button(mat-button matStepperPrevious) Back
           button(mat-button matStepperNext) Next
-      mat-step(label='Reading things...')
+      mat-step(label='Reading things and contact information')
         div(class='form')
           p
             | I've read the rules and I will do my best to follow them,
@@ -44,13 +44,18 @@ form('[formGroup]'='applicationForm')
             | it can result in an immediate ban without any prior notification
             | and accept the privacy policy of the website, entrusting all
             | information previously filled to continue with my application process
-          mat-checkbox(formControlName="Agreement") Agree
+          mat-checkbox(formControlName="Agreement" '[(ngModel)]'='checked') I Agree
+          mat-form-field(class='full-width')
+            mat-label Discord#Tag
+            input(matInput formControlName="Discord")
         div(class='buttons')
           button('(click)'='openRules()' mat-raised-button color='primary') Read the Community Rules
           button('(click)'='openPrivacyPolicy()' mat-raised-button color='primary') Read the Privacy Policy
         div(class='buttons')
           button(mat-button matStepperPrevious) Back
-          button(mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)') Submit
+          button(*ngIf='applicationForm.valid && checked' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)') Submit
+          button(*ngIf='!applicationForm.valid' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)' disabled) You're missing some fields!
+          button(*ngIf='applicationForm.valid && !checked' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)' disabled) You need to check the box above!
 mat-dialog-actions
   button(mat-button mat-dialog-close) Cancel
 
