@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: 'http://localhost:3009/api',
+  discordid: '703298132951433216',
+  minecraftip: '177.230.206.3',
+  minecraftport: '25565'
 };
 
 /*
