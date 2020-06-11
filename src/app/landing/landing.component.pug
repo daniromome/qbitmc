@@ -1,1 +1,66 @@
 
+div(class='basic-grid')
+  div(class='a')
+    mat-card
+      mat-card-header
+        div(mat-card-avatar class='header-image')
+        mat-card-title Latest Applications
+        mat-card-subtitle We'll review them soon!
+      mat-card-content
+        mat-list
+          mat-list-item(*ngFor='let application of applications')
+            img(src='https://minotar.net/helm/{{application.IGN}}/25.png' mat-list-icon)
+            div(mat-line) {{application.IGN}}
+            div(*ngIf='application.Status == 0' mat-line) Pending...
+            div(*ngIf='application.Status == 1' mat-line) Accepted ✔️
+            div(*ngIf='application.Status == -1' mat-line) Denied ✖️
+      mat-card-actions(align='end')
+        button(mat-button '(click)'='openDialog()') Apply!
+  div(class='b')
+    mat-toolbar(color='primary' '[class.mat-elevation-z1]'="true") Announcement Board
+    div(class='full-width')
+      mat-card
+        mat-card-header
+          mat-card-title
+          mat-card-subtitle
+        mat-card-content
+        mat-card-footer
+  div(class='c')
+    mat-card
+      mat-card-header
+        div(*ngIf='status==1' mat-card-avatar class='header-image' matBadge="✔️" matBadgePosition="above after" matBadgeColor="primary")
+        div(*ngIf='status!=1' mat-card-avatar class='header-image' matBadge="✖️" matBadgePosition="above after" matBadgeColor="warn")
+        mat-card-title {{name}} SMP
+        mat-card-subtitle(*ngIf='status==1') {{players}}/{{maxPlayers}} Players Online
+        mat-card-subtitle(*ngIf='status!=1') Server Offline
+      mat-card-content
+        mat-list
+          div(mat-subheader *ngIf='players > 0') Online Players
+          mat-list-item(*ngFor='let player of playersList')
+            img(src='https://minotar.net/helm/{{player}}/25.png' mat-list-icon)
+            div(mat-line) {{player}}
+      mat-card-actions(align='end')
+        button(mat-button)
+          mat-icon() file_copy
+          |
+          |Copy IP
+    mat-card
+      mat-card-header
+        div(mat-card-avatar class='header-image')
+        mat-card-title {{name}}'s Discord Server
+        mat-card-subtitle {{online}} Members Online
+      mat-card-content
+        mat-list
+          div(mat-subheader) Online Members
+          mat-list-item(*ngFor='let member of members')
+            img(src='{{member.avatar_url}}' mat-list-icon)
+            div(mat-line) {{member.username}}
+            div(*ngIf='member.game' mat-line) {{member.game.name}}
+      mat-card-actions(align='end')
+        a(mat-button href='{{instantInvite}}' target='_blank')
+          mat-icon() open_in_new
+          |
+          |Join
+
+
+
