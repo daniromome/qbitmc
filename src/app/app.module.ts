@@ -31,6 +31,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { RecoverPasswordComponent } from './recover-password/recover-password.co
     LandingComponent,
     LogInComponent,
     RegisterComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
