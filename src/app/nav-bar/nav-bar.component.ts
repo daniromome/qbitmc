@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplicationFormComponent } from '../application-form/application-form.component';
+import { LogInComponent } from '../log-in/log-in.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,16 +12,17 @@ export class NavBarComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ApplicationFormComponent, {
+  openApplication() {
+    this.dialog.open(ApplicationFormComponent, {
       height: '51em',
       width: '42em',
-      // height: '400px',
-      // width: '540px',
     });
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+  openLogIn() {
+    this.dialog.open(LogInComponent, {
+      height: '26em',
+      width: '20em',
     });
   }
 
