@@ -1,0 +1,27 @@
+h2(mat-dialog-title) Log In
+mat-dialog-content
+  div(class='column')
+    form('[formGroup]'='logInForm')
+      div(class='column')
+        mat-form-field
+          mat-label Email
+          input(matInput '[formControl]'='email')
+        mat-form-field
+          mat-label Password
+          input(type='password' matInput '[formControl]'='pass')
+    div(class='column' style='margin: 1.34375em 0;')
+      div
+        p
+          | Don't have an account?
+          |
+          a('(click)'='openRegistration()' style='color:blue;') Register
+      div
+        p
+          | Forgot your password?
+          |
+          a('(click)'='openRecovery()' style='color:red;') Recover it
+mat-dialog-actions(align='end')
+  button(mat-button mat-dialog-close) Cancel
+  button(*ngIf='!logInForm.valid' mat-button disabled) Log In
+  button(*ngIf='logInForm.valid' mat-button color='primary' '(click)'='onSubmit(logInForm.value)') Log In
+
