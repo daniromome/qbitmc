@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:3009/api',
+  api: 'https://qbitmc.api.dani9oo.dev/api',
   discordid: '703298132951433216',
   minecraftip: '177.230.206.3',
   minecraftport: '25565'
