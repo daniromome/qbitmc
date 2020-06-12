@@ -19,6 +19,10 @@ export class DataRequestService {
     return this.http.get(`${environment.api}/application/fetch`);
   }
 
+  logIn(logInData) {
+    return this.http.post(`${environment.api}/user/logIn`, logInData);
+  }
+
   fetchDiscord() {
     return this.http.get(`https://discordapp.com/api/guilds/${environment.discordid}/widget.json`);
   }
