@@ -7,11 +7,10 @@ import { DataRequestService } from '../data-request.service';
 
 @Component({
   templateUrl: './application-form.component.pug',
-  styleUrls: ['./application-form.component.css']
+  styleUrls: ['./application-form.component.css'],
 })
 export class ApplicationFormComponent implements OnInit {
 
-  checked = false;
   applicationForm;
   ign;
   url;
@@ -45,6 +44,7 @@ export class ApplicationFormComponent implements OnInit {
     Validators.required,
     Validators.pattern(this.safeUrlReg),
   ]);
+  Agreement = new FormControl('', []);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,25 +59,21 @@ export class ApplicationFormComponent implements OnInit {
       Experiences: this.Experiences,
       Activities: this.Activities,
       PrevWork: this.linkFormControl,
-      Agreement: ''
+      Agreement: this.Agreement
     });
   }
 
   openRules() {
-    const dialogRef = this.dialog.open(RulesComponent, {
+    this.dialog.open(RulesComponent, {
       height: '51em',
       width: '42em',
-      // height: '400px',
-      // width: '540px',
     });
   }
 
   openPrivacyPolicy() {
-    const dialogRef = this.dialog.open(PrivacyPolicyComponent, {
+    this.dialog.open(PrivacyPolicyComponent, {
       height: '51em',
       width: '42em',
-      // height: '400px',
-      // width: '540px',
     });
   }
 

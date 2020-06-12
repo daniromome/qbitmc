@@ -1,16 +1,16 @@
 h2(mat-dialog-title) Application Form
 mat-dialog-content
 form('[formGroup]'='applicationForm')
-  div(class='form')
+  div(class='column')
     mat-vertical-stepper
       mat-step(label="First Steps...")
         div(class='row')
           mat-form-field(class='full-width')
             mat-label Forename
-            input(matInput formControlName="Forename")
+            input(matInput '[formControl]'="Forename")
           mat-form-field(class='full-width')
             mat-label In Game Name
-            input(matInput #ign '(keyup)'="onKey(ign.value)" formControlName="IGN")
+            input(matInput #ign '(keyup)'="onKey(ign.value)" '[formControl]'="IGN")
           div(*ngIf="url && url != 'https://minotar.net/helm//100.png'")
             img(src='{{url}}' class='avatar')
         div(class='buttons')
@@ -20,10 +20,10 @@ form('[formGroup]'='applicationForm')
         div(class='row')
           mat-form-field(class='full-width')
             mat-label Reasons
-            textarea(matInput placeholder="Why would you like to join our community?" formControlName="Reasons")
+            textarea(matInput placeholder="Why would you like to join our community?" '[formControl]'="Reasons")
           mat-form-field(class='full-width')
             mat-label Experiences
-            textarea(matInput placeholder="Experiences in previous private minecraft servers" formControlName="Experiences")
+            textarea(matInput placeholder="Experiences in previous private minecraft servers" '[formControl]'="Experiences")
         mat-form-field(class='full-width')
           mat-label Select the sentences which match your favorite minecraft activities
           mat-select('[formControl]'="Activities" multiple)
@@ -37,25 +37,26 @@ form('[formGroup]'='applicationForm')
           button(mat-button matStepperPrevious) Back
           button(mat-button matStepperNext) Next
       mat-step(label='Reading things and contact information')
-        div(class='form')
+        div(class='column')
           p
             | I've read the rules and I will do my best to follow them,
             | I'm aware that if at any given moment I fail to comply to any of them
             | it can result in an immediate ban without any prior notification
             | and accept the privacy policy of the website, entrusting all
             | information previously filled to continue with my application process
-          mat-checkbox(formControlName="Agreement" '[(ngModel)]'='checked') I Agree
+          mat-checkbox('[formControl]'="Agreement") I Agree
           mat-form-field(class='full-width')
             mat-label Discord#Tag
-            input(matInput formControlName="Discord")
-        div(class='buttons')
-          button('(click)'='openRules()' mat-raised-button color='primary') Read the Community Rules
-          button('(click)'='openPrivacyPolicy()' mat-raised-button color='primary') Read the Privacy Policy
-        div(class='buttons')
-          button(mat-button matStepperPrevious) Back
-          button(*ngIf='applicationForm.valid && checked' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)') Submit
-          button(*ngIf='!applicationForm.valid' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)' disabled) You're missing some fields!
-          button(*ngIf='applicationForm.valid && !checked' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)' disabled) You need to check the box above!
+            input(matInput '[formControl]'="Discord")
+        div(class='row')
+          div(class='column')
+            button('(click)'='openRules()' mat-raised-button color='primary') Read the Community Rules
+            button(mat-button matStepperPrevious) Back
+          div(class='column')
+            button('(click)'='openPrivacyPolicy()' mat-raised-button color='primary') Read the Privacy Policy
+            button(*ngIf='applicationForm.valid && Agreement.value' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)') Submit
+            button(*ngIf='!applicationForm.valid' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)' disabled) You're missing some fields!
+            button(*ngIf='applicationForm.valid && !Agreement.value' mat-button '[mat-dialog-close]'='true' '(click)'='onSubmit(applicationForm.value)' disabled) You need to check the box above!
 mat-dialog-actions
   button(mat-button mat-dialog-close) Cancel
 
