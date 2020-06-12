@@ -40,21 +40,20 @@ export class LogInComponent implements OnInit {
 
   openRegistration() {
     this.dialog.open(RegisterComponent, {
-      height: '26em',
+      height: '33em',
       width: '20em',
     });
   }
 
   openRecovery() {
     this.dialog.open(RecoverPasswordComponent, {
-      height: '26em',
+      height: '15em',
       width: '20em',
     });
   }
 
   onSubmit(formData) {
     this.dataRequestService.logIn(formData).subscribe((data: any) => {
-      console.log(data);
       if (!data.success) {
         this.snackBar.open(data.result, '✖️', {
           duration: 3000
