@@ -12,59 +12,69 @@
   mat-toolbar {
     margin-top: 1rem;
   }
+
+  .a, .c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .a {
+    grid-area: a;
+  }
+
+  .b {
+    grid-area: b;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .c {
+    grid-area: c;
+  }
+
+  .a > mat-card, .c > mat-card {
+    width: 80%;
+    max-height: 45%;
+    overflow-y: auto;
+  }
+
 }
 
 @media only screen and (max-width: 1024px) {
   .basic-grid {
-    display: grid;
-    gap: 1rem;
-    grid-template-areas: 'a' 'b' 'c';
-    grid-template-rows: auto auto auto;
-    grid-template-columns: auto;
-    width: 100%;
-    height: 94.6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
   }
-}
 
+  .a, .b, .c {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    margin: 1rem 0;
+  }
 
-.a {
-  grid-area: a;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
+  .a > mat-card, .c > mat-card {
+    width: inherit;
+    max-height: fit-content;
+    overflow-y: auto;
+  }
 
-.b {
-  grid-area: b;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
+  .c > mat-card {
+    margin-top: 1rem;
+  }
 
-.c {
-  grid-area: c;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .header-image {
   background-image: url('../../assets/rainbow.png');
   background-size: cover;
-}
-
-.a > mat-card, .c > mat-card {
-  width: 80%;
-  max-height: 45%;
-  overflow-y: auto;
-}
-
-.full-width {
-  width: 100%;
-  height: 100%;
 }
 
 .b > mat-card {

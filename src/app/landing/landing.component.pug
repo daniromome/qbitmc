@@ -1,5 +1,14 @@
 
 div(class='basic-grid')
+  div(class='b')
+    mat-toolbar(color='primary' '[class.mat-elevation-z1]'="true") Announcement Board
+    div(class='full-width')
+      mat-card
+        mat-card-header
+          mat-card-title
+          mat-card-subtitle
+        mat-card-content
+        mat-card-footer
   div(class='a')
     mat-card
       mat-card-header
@@ -16,15 +25,6 @@ div(class='basic-grid')
             div(*ngIf='application.Status == -1' mat-line) Denied ✖️
       mat-card-actions(align='end')
         button(mat-button '(click)'='openDialog()') Apply!
-  div(class='b')
-    mat-toolbar(color='primary' '[class.mat-elevation-z1]'="true") Announcement Board
-    div(class='full-width')
-      mat-card
-        mat-card-header
-          mat-card-title
-          mat-card-subtitle
-        mat-card-content
-        mat-card-footer
   div(class='c')
     mat-card
       mat-card-header
