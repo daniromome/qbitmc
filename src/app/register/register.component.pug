@@ -1,1 +1,22 @@
-p Registration Component
+h2(mat-dialog-title) Register
+mat-dialog-content
+  form('[formGroup]'='registrationForm')
+    div(class='column')
+      mat-form-field
+        mat-label In Game Name
+        input(matInput '[formControl]'='ign')
+      mat-form-field
+        mat-label Email
+        input(matInput '[formControl]'='email')
+      mat-form-field
+        mat-label Password
+        input(type='password' matInput '[formControl]'='password')
+      mat-form-field
+        mat-label Confirm Password
+        input(type='password' matInput '[formControl]'='confirmPassword' '(keyup)'='onKey()')
+      h6(*ngIf='password.hasError(\'pattern\')') Password must contain at least one uppercase letter, one lowercase letter and one number
+      h6(*ngIf='password.value !== confirmPassword.value') Passwords do not match
+mat-dialog-actions(align='end')
+  button(mat-button mat-dialog-close) Cancel
+  button(*ngIf='!registrationForm.valid || password.value !== confirmPassword.value' mat-button disabled) Register
+  button(*ngIf='registrationForm.valid && password.value == confirmPassword.value' mat-button color='primary' '(click)'='onSubmit(registrationForm.value)') Register
