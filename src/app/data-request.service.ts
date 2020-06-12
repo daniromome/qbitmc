@@ -19,8 +19,24 @@ export class DataRequestService {
     return this.http.get(`${environment.api}/application/fetch`);
   }
 
-  logIn(logInData) {
-    return this.http.post(`${environment.api}/user/logIn`, logInData);
+  logIn(userData) {
+    return this.http.post(`${environment.api}/user/logIn`, userData);
+  }
+
+  registerUser(userData){
+    return this.http.post(`${environment.api}/user/register`, userData);
+  }
+
+  confirmEmail(id){
+    return this.http.get(`${environment.api}/user/email/${id}`);
+  }
+
+  recoverPassword(email) {
+    return this.http.get(`${environment.api}/user/password/recover/${email}`);
+  }
+
+  resetPassword(userData){
+    return this.http.put(`${environment.api}/user/password/reset`, userData);
   }
 
   fetchDiscord() {
