@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,9 @@ import { RulesComponent } from './rules/rules.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { WipComponent } from './wip/wip.component';
 import { LandingComponent } from './landing/landing.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { RegisterComponent } from './register/register.component';
+import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import { LandingComponent } from './landing/landing.component';
     RulesComponent,
     PrivacyPolicyComponent,
     WipComponent,
-    LandingComponent
+    LandingComponent,
+    LogInComponent,
+    RegisterComponent,
+    RecoverPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,8 @@ import { LandingComponent } from './landing/landing.component';
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
