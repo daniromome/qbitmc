@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -32,6 +31,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CommunityComponent } from './community/community.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     LogInComponent,
     RegisterComponent,
     RecoverPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    CommunityComponent
   ],
   imports: [
     BrowserModule,
