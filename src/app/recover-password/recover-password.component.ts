@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DataRequestService } from '../data-request.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LogInComponent } from '../log-in/log-in.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   templateUrl: './recover-password.component.pug',
@@ -16,7 +18,8 @@ export class RecoverPasswordComponent implements OnInit {
 
   constructor(
     private dataRequestService: DataRequestService,
-    private snackBar: MatSnackBar
+    public dialogRef: MatDialogRef<LogInComponent>,
+    @Inject(MAT_DIALOG_DATA) public data
   ) { }
 
   ngOnInit(): void {
@@ -24,11 +27,16 @@ export class RecoverPasswordComponent implements OnInit {
 
   onSubmit(email) {
     this.dataRequestService.recoverPassword(email).subscribe((data: any) => {
-      let snackAlert: string;
-      if (!data.success) { snackAlert = '✖️'; } else if (data.success) { snackAlert = '✔️'; }
-      this.snackBar.open(data.result, snackAlert, {
-        duration: 3000
-      });
+      if (data.success) {
+        this.data.snackBar.open(data.result, '✓', {
+          duration: 3000
+        });
+        this.dialogRef.close();
+      } else {
+        this.data.snackBar.open(data.result, 'x', {
+          duration: 3000
+        });
+      }
     });
   }
 

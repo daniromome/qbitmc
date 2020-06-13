@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { DataRequestService } from '../data-request.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LogInComponent } from '../log-in/log-in.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   templateUrl: './register.component.pug',
@@ -33,7 +35,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private dataRequestService: DataRequestService,
-    private snackBar: MatSnackBar
+    public dialogRef: MatDialogRef<LogInComponent>,
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
     this.registrationForm = this.formBuilder.group({
       IGN: this.ign,
@@ -51,12 +54,17 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(userData) {
-    let snackAlert: string;
     this.dataRequestService.registerUser(userData).subscribe((data: any) => {
-      if (!data.success) { snackAlert = '✖️'; } else if (data.success) { snackAlert = '✔️'; }
-      this.snackBar.open(data.result, snackAlert, {
-        duration: 3000
-      });
+      if (data.success) {
+        this.data.snackBar.open(data.result, '✓', {
+          duration: 3000
+        });
+        this.dialogRef.close();
+      } else {
+        this.data.snackBar.open(data.result, 'x', {
+          duration: 3000
+        });
+      }
     });
   }
 
