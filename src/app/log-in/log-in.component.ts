@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RegisterComponent } from '../register/register.component';
 import { RecoverPasswordComponent } from '../recover-password/recover-password.component';
 import { DataRequestService } from '../data-request.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { first } from 'rxjs/operators';
 
 @Component({
   templateUrl: './log-in.component.pug',
@@ -27,7 +29,9 @@ export class LogInComponent implements OnInit {
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private dataRequestService: DataRequestService,
-    private snackBar: MatSnackBar
+    public dialogRef: MatDialogRef<NavBarComponent>,
+    @Inject(MAT_DIALOG_DATA) public data,
+    private router: Router
   ) {
     this.logInForm = this.formBuilder.group({
       Email: this.email,
@@ -41,25 +45,53 @@ export class LogInComponent implements OnInit {
   openRegistration() {
     this.dialog.open(RegisterComponent, {
       height: '33em',
-      width: '20em',
+      width: '22em',
+      data: this.data.snackBar
     });
   }
 
   openRecovery() {
     this.dialog.open(RecoverPasswordComponent, {
       height: '15em',
-      width: '20em',
+      width: '22em',
+      data: this.data.snackBar
     });
   }
 
   onSubmit(formData) {
-    this.dataRequestService.logIn(formData).subscribe((data: any) => {
+    this.dataRequestService.logIn(formData)
+      .pipe(first())
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.data.snackBar.open(data.result, '✓', {
+            duration: 3000
+          });
+          this.router.navigate(['/community']);
+          this.dialogRef.close();
+        } else {
+          this.data.snackBar.open(data.result, 'x', {
+            duration: 3000
+          });
+        }
+      });
+    /* this.dataRequestService.logIn(formData).subscribe((data: any) => {
+      console.log(data);
       if (!data.success) {
-        this.snackBar.open(data.result, '✖️', {
+        this.data.snackBar.open(data.result, 'x', {
           duration: 3000
         });
+      } else {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        this.data.snackBar.open(data.result, '✓', {
+          duration: 3000
+        });
+        if (this.router.url !== '/') {
+          this.router.navigate(['/']);
+        } else {
+          this.dialogRef.close();
+        }
       }
-    });
+    }); */
   }
 
 }
