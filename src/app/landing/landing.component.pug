@@ -1,4 +1,3 @@
-
 div(class='basic-grid')
   div(class='b')
     mat-toolbar(color='primary' '[class.mat-elevation-z1]'="true") Announcement Board
@@ -21,15 +20,15 @@ div(class='basic-grid')
             img(src='https://minotar.net/helm/{{application.IGN}}/25.png' mat-list-icon)
             div(mat-line) {{application.IGN}}
             div(*ngIf='application.Status == 0' mat-line) Pending...
-            div(*ngIf='application.Status == 1' mat-line) Accepted ✔️
-            div(*ngIf='application.Status == -1' mat-line) Denied ✖️
+            div(*ngIf='application.Status == 1' mat-line) Accepted ✓
+            div(*ngIf='application.Status == -1' mat-line) Denied x
       mat-card-actions(align='end')
         button(mat-button '(click)'='openDialog()') Apply!
   div(class='c')
     mat-card
       mat-card-header
-        div(*ngIf='status==1' mat-card-avatar class='header-image' matBadge="✔️" matBadgePosition="above after" matBadgeColor="primary")
-        div(*ngIf='status!=1' mat-card-avatar class='header-image' matBadge="✖️" matBadgePosition="above after" matBadgeColor="warn")
+        div(*ngIf='status==1' mat-card-avatar class='header-image' matBadge="✓" matBadgePosition="above after" matBadgeColor="primary")
+        div(*ngIf='status!=1' mat-card-avatar class='header-image' matBadge="x" matBadgePosition="above after" matBadgeColor="warn")
         mat-card-title {{name}} SMP
         mat-card-subtitle(*ngIf='status==1') {{players}}/{{maxPlayers}} Players Online
         mat-card-subtitle(*ngIf='status!=1') Server Offline
