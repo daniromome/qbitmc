@@ -14,7 +14,6 @@ form('[formGroup]'='applicationForm')
           div(*ngIf="url && url != 'https://minotar.net/helm//100.png'")
             img(src='{{url}}' class='avatar')
         div(class='buttons')
-          button(mat-button matStepperPrevious) Back
           button(mat-button matStepperNext) Next
       mat-step(label="Tell us about yourself!")
         div(class='row')
