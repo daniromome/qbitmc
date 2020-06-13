@@ -10,16 +10,12 @@ mat-dialog-content
           mat-label Password
           input(type='password' matInput '[formControl]'='pass')
     div(class='column' style='margin: 1.34375em 0;')
-      div
-        p
-          | Don't have an account?
-          |
-          a('(click)'='openRegistration()' style='color:blue;') Register
-      div
-        p
-          | Forgot your password?
-          |
-          a('(click)'='openRecovery()' style='color:red;') Recover it
+      div(class='apart')
+        p Don't have an account?
+        a('(click)'='openRegistration()' mat-button color='primary') Register
+      div(class='apart')
+        p Forgot your password?
+        a('(click)'='openRecovery()' mat-button color='warn') Recover it
 mat-dialog-actions(align='end')
   button(mat-button mat-dialog-close) Cancel
   button(*ngIf='!logInForm.valid' mat-button disabled) Log In
