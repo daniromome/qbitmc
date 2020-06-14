@@ -48,5 +48,44 @@ div
         mat-card-subtitle Joining QbitMC's Seventh Season
       img(mat-card-image src="https://i.imgur.com/chmiqYh.png")
       mat-card-content
-        h3
+        h2 The way we play the game
+        p To be completed
+        h2 Additional features
         p
+          | As you've probably read before, we believe that you now have an idea that we're not a really conventional SMP.
+          | We have additional features to increase the overall experiences of all of our community members. These additional
+          | features do not have any kind of impact in the vanilla behaviour of the game, all of it thanks to
+          |
+          a(href="https://fabricmc.net/") Fabric
+          | , Mojang for providing the ability to make modifications through datapacks, and the team behind
+          |
+          a(href="https://vanillatweaks.net/") Vanilla Tweaks
+          |
+          | for providing such an amazing collection of datapacks. Without further reading, here are the features we've been
+          | talking about:
+        mat-list
+          div(mat-subheader) Datapacks
+          mat-list-item(*ngFor='let datapack of datapackList')
+            div(mat-line)
+              a(href='{{datapack.source}}') {{datapack.name}}
+          div(mat-subheader) Server-Side Modifications
+          mat-list-item(*ngFor='let modification of modificationList')
+            div(mat-line)
+              a(href='{{modification.source}}') {{modification.name}}
+        // mat-accordion
+          mat-expansion-panel
+            mat-expansion-panel-header
+              mat-panel-title Server-Side Modifications
+            mat-list
+              mat-list-item(*ngFor='let modification of modificationList')
+                div(mat-line)
+                  a(href='{{modification.source}}') {{modification.name}}
+          mat-expansion-panel
+            mat-expansion-panel-header
+              mat-panel-title Datapacks
+                mat-list
+                  mat-list-item(*ngFor='let datapack of datapackList')
+                    div(mat-line)
+                      a(href='{{datapack.source}}') {{datapack.name}}
+
+
