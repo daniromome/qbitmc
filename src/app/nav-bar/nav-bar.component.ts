@@ -5,6 +5,7 @@ import { LogInComponent } from '../log-in/log-in.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/user.model';
 import { DataRequestService } from '../data-request.service';
+import { StaffMenuComponent } from '../staff-menu/staff-menu.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,7 +14,7 @@ import { DataRequestService } from '../data-request.service';
 })
 export class NavBarComponent implements OnInit {
 
-  user: User;
+  user;
   qbitor = false;
   staff = false;
 
@@ -22,11 +23,7 @@ export class NavBarComponent implements OnInit {
     public snackBar: MatSnackBar,
     private dataRequestService: DataRequestService
   ) {
-    this.user = this.dataRequestService.userValue;
-    if (this.user) {
-      this.qbitor = this.user.Roles.includes('Qbitor');
-      this.staff = this.user.Roles.includes('Staff');
-    }
+    this.updateComponent();
   }
 
   openApplication() {
@@ -38,7 +35,34 @@ export class NavBarComponent implements OnInit {
   }
 
   openLogIn() {
-    this.dialog.open(LogInComponent, {
+    const dialogRef = this.dialog.open(LogInComponent, {
+      height: '26em',
+      width: '22em',
+      data: { snackBar: this.snackBar }
+    });
+    dialogRef.afterClosed().subscribe(() => this.updateComponent());
+  }
+
+  updateComponent() {
+    this.dataRequestService.user.subscribe(x => {
+      this.user = x;
+    });
+    if (this.user) {
+      this.qbitor = this.user.Roles.includes('Qbitor');
+      this.staff = this.user.Roles.includes('Staff');
+    } else {
+      this.qbitor = false;
+      this.staff = false;
+    }
+  }
+
+  logOut() {
+    this.dataRequestService.logOut();
+    this.updateComponent();
+  }
+
+  openStaffMenu() {
+    const dialogRef = this.dialog.open(StaffMenuComponent, {
       height: '26em',
       width: '22em',
       data: { snackBar: this.snackBar }
