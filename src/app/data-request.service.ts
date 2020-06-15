@@ -40,9 +40,9 @@ export class DataRequestService {
         if (data.success) {
           const user: User = new User(data.user);
           localStorage.setItem('user', JSON.stringify(user));
-          this.userSubject.next(data);
+          this.userSubject.next(data.user);
         } else {
-          this.userSubject.next(data);
+          this.userSubject.next(data.user);
         }
         return data;
     }));
@@ -50,6 +50,7 @@ export class DataRequestService {
 
   logOut() {
     localStorage.removeItem('user');
+    this.userSubject.next(null);
     this.router.navigate(['/']);
   }
 
