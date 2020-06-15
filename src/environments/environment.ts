@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   api: 'https://qbitmc-backend.herokuapp.com/api',
   discordid: '703298132951433216',
-  minecraftip: '177.230.206.3',
-  minecraftport: '25565'
+  minecraftip: '142.44.129.145',
+  minecraftport: '25593'
 };
 
 /*
