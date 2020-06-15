@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { RegisterComponent } from './register/register.component';
 import { RecoverPasswordComponent } from './recover-password/recover-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CommunityComponent } from './community/community.component';
+import { StaffMenuComponent } from './staff-menu/staff-menu.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { CommunityComponent } from './community/community.component';
     RegisterComponent,
     RecoverPasswordComponent,
     ResetPasswordComponent,
-    CommunityComponent
+    CommunityComponent,
+    StaffMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { CommunityComponent } from './community/community.component';
     MatIconModule,
     MatToolbarModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
