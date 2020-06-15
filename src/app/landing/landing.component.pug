@@ -17,8 +17,8 @@ div(class='basic-grid')
       mat-card-content
         mat-list
           mat-list-item(*ngFor='let application of applications')
-            img(src='https://minotar.net/helm/{{application.IGN}}/25.png' mat-list-icon)
-            div(mat-line) {{application.IGN}}
+            img(src='https://minotar.net/helm/{{application.UUID}}/25.png' mat-list-icon)
+            div(mat-line) {{application.Forename}}
             div(*ngIf='application.Status == 0' mat-line) Pending...
             div(*ngIf='application.Status == 1' mat-line) Accepted ✓
             div(*ngIf='application.Status == -1' mat-line) Denied x
@@ -39,7 +39,7 @@ div(class='basic-grid')
             img(src='https://minotar.net/helm/{{player}}/25.png' mat-list-icon)
             div(mat-line) {{player}}
       mat-card-actions(align='end')
-        button(mat-button)
+        button(mat-button '[cdkCopyToClipboard]'='"qbitmc.dani9oo.dev"')
           mat-icon() file_copy
           |
           |Copy IP
