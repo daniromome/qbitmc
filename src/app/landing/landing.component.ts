@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataRequestService } from '../data-request.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplicationFormComponent } from '../application-form/application-form.component';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './landing.component.pug',
@@ -25,8 +27,29 @@ export class LandingComponent implements OnInit {
 
   constructor(
     private dataService: DataRequestService,
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    private readonly route: ActivatedRoute,
+    public snackBar: MatSnackBar
+  ) {
+    this.route.queryParamMap.subscribe(params => {
+      if (params.has('emailConfirmed')) {
+        const confirmed = params.get('emailConfirmed');
+        if (confirmed === 'true') {
+          this.snackBar.open('Email confirmed successfully', '✓', { duration: 3000 });
+        } else if (confirmed === 'false') {
+          this.snackBar.open(params.get('result'), 'x', { duration: 3000 });
+        }
+      }
+      if (params.has('passwordReset')) {
+        const passReset = params.get('passwordReset');
+        if (passReset === 'true') {
+          this.snackBar.open('New password successfully changed', '✓', { duration: 3000 });
+        } else if (passReset === 'false') {
+          this.snackBar.open(params.get('result'), 'x', {duration: 3000});
+        }
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.dataService.fetchDiscord().subscribe((data: any) => {
