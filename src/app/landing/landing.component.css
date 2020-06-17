@@ -35,10 +35,16 @@
     grid-area: c;
   }
 
-  .a > mat-card, .c > mat-card {
+  .a > mat-card {
     width: 80%;
-    max-height: 45%;
     overflow-y: auto;
+    max-height: 90%;
+  }
+
+  .c > mat-card {
+    width: 80%;
+    overflow-y: auto;
+    max-height: 45%;
   }
 
 }
