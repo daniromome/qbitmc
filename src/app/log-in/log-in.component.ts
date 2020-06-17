@@ -7,6 +7,7 @@ import { DataRequestService } from '../data-request.service';
 import { Router } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { first } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './log-in.component.pug',
@@ -31,7 +32,7 @@ export class LogInComponent implements OnInit {
     private dataRequestService: DataRequestService,
     public dialogRef: MatDialogRef<NavBarComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    private router: Router
+    private router: Router,
   ) {
     this.logInForm = this.formBuilder.group({
       Email: this.email,
@@ -46,7 +47,7 @@ export class LogInComponent implements OnInit {
     this.dialog.open(RegisterComponent, {
       height: '33em',
       width: '22em',
-      data: this.data.snackBar
+      data: { snackBar: this.data.snackBar }
     });
   }
 
@@ -54,7 +55,7 @@ export class LogInComponent implements OnInit {
     this.dialog.open(RecoverPasswordComponent, {
       height: '15em',
       width: '22em',
-      data: this.data.snackBar
+      data: { snackBar: this.data.snackBar }
     });
   }
 
