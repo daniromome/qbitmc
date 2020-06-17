@@ -58,8 +58,8 @@ export class DataRequestService {
     return this.http.post(`${environment.api}/user/register`, userData);
   }
 
-  confirmEmail(id){
-    return this.http.get(`${environment.api}/user/email/${id}`);
+  confirmEmail(userData){
+    return this.http.post(`${environment.api}/user/confirmEmail`, userData);
   }
 
   recoverPassword(email) {
