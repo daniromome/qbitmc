@@ -1,0 +1,12 @@
+div
+  mat-card
+    mat-card-header
+      mat-card-title Email Confirmation
+    mat-card-content
+      div(class='column')
+        mat-form-field
+          mat-label Password
+          input(type='password' matInput '[formControl]'='pass')
+    mat-card-actions(align='end')
+      button(*ngIf='!confirmationForm.valid' mat-button disabled) Confirm Email
+      button(*ngIf='confirmationForm.valid' mat-button color='primary' '(click)'='onSubmit(confirmationForm.value)') Confirm Email
