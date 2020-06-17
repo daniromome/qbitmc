@@ -7,5 +7,5 @@ div(class="container")
   button(*ngIf='!qbitor' mat-flat-button color="primary" '(click)'="openApplication()") Apply
   button(*ngIf='!qbitor' mat-flat-button color="primary" '(click)'="openLogIn()") Log In
   button(*ngIf='qbitor' mat-flat-button color="primary" '[routerLink]'='["/community"]') Community
-  button(*ngIf='qbitor' mat-flat-button color="primary" '(click)'="logOut()") Log Out
   button(*ngIf='staff' mat-flat-button color="primary" '(click)'="openStaffMenu()") Staff Menu
+  button(*ngIf='qbitor' mat-flat-button color="primary" '(click)'="logOut()") Log Out
