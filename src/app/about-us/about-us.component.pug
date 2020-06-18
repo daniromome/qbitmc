@@ -63,16 +63,7 @@ div
           |
           | for providing such an amazing collection of datapacks. Without further reading, here are the features we've been
           | talking about:
-        mat-list
-          div(mat-subheader) Datapacks
-          mat-list-item(*ngFor='let datapack of datapackList')
-            div(mat-line)
-              a(href='{{datapack.source}}') {{datapack.name}}
-          div(mat-subheader) Server-Side Modifications
-          mat-list-item(*ngFor='let modification of modificationList')
-            div(mat-line)
-              a(href='{{modification.source}}') {{modification.name}}
-        // mat-accordion
+        mat-accordion
           mat-expansion-panel
             mat-expansion-panel-header
               mat-panel-title Server-Side Modifications
@@ -83,9 +74,9 @@ div
           mat-expansion-panel
             mat-expansion-panel-header
               mat-panel-title Datapacks
-                mat-list
-                  mat-list-item(*ngFor='let datapack of datapackList')
-                    div(mat-line)
-                      a(href='{{datapack.source}}') {{datapack.name}}
+            mat-list
+              mat-list-item(*ngFor='let datapack of datapackList')
+                div(mat-line)
+                  a(href='{{datapack.source}}') {{datapack.name}}
 
 
