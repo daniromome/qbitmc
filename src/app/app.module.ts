@@ -35,6 +35,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { CommunityComponent } from './community/community.component';
 import { StaffMenuComponent } from './staff-menu/staff-menu.component';
 import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
+import { AnnounceComponent } from './announce/announce.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
     ResetPasswordComponent,
     CommunityComponent,
     StaffMenuComponent,
-    ConfirmUserComponent
+    ConfirmUserComponent,
+    AnnounceComponent
   ],
   imports: [
     BrowserModule,
