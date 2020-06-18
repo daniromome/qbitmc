@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -75,7 +76,8 @@ import { AnnounceComponent } from './announce/announce.component';
     MatToolbarModule,
     MatBadgeModule,
     MatSnackBarModule,
-    ClipboardModule
+    ClipboardModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
