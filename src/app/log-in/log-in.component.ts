@@ -45,16 +45,16 @@ export class LogInComponent implements OnInit {
 
   openRegistration() {
     this.dialog.open(RegisterComponent, {
-      height: '33em',
-      width: '22em',
+      maxHeight: '33em',
+      maxWidth: '22em',
       data: { snackBar: this.data.snackBar }
     });
   }
 
   openRecovery() {
     this.dialog.open(RecoverPasswordComponent, {
-      height: '15em',
-      width: '22em',
+      maxHeight: '15em',
+      maxWidth: '22em',
       data: { snackBar: this.data.snackBar }
     });
   }

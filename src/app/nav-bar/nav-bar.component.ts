@@ -28,16 +28,16 @@ export class NavBarComponent implements OnInit {
 
   openApplication() {
     this.dialog.open(ApplicationFormComponent, {
-      height: '51em',
-      width: '42em',
+      maxHeight: '51em',
+      maxWidth: '42em',
       data: { snackBar: this.snackBar }
     });
   }
 
   openLogIn() {
     const dialogRef = this.dialog.open(LogInComponent, {
-      height: '26em',
-      width: '22em',
+      maxHeight: '26em',
+      maxWidth: '22em',
       data: { snackBar: this.snackBar }
     });
     dialogRef.afterClosed().subscribe(() => this.updateComponent());
@@ -63,8 +63,8 @@ export class NavBarComponent implements OnInit {
 
   openStaffMenu() {
     const dialogRef = this.dialog.open(StaffMenuComponent, {
-      height: '26em',
-      width: '22em',
+      maxHeight: '26em',
+      maxWidth: '22em',
       data: { snackBar: this.snackBar }
     });
   }
