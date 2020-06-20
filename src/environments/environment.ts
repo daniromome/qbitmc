@@ -7,7 +7,8 @@ export const environment = {
   api: 'https://qbitmc-backend.herokuapp.com/api',
   discordid: '703298132951433216',
   minecraftip: '142.44.129.145',
-  minecraftport: '25593'
+  minecraftport: '25593',
+  stripekey: 'pk_test_51Gvo2mLCN45uFpUafyYGKjRhXLIygrR7ZbSHjusMBf8iXluWJYpdXmQL0tD9bxzRi4YkMgnzsMy3jEXTudaT2BxI005nnTfeOE'
 };
 
 /*
