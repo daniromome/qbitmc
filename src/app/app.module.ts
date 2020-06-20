@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -18,6 +18,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { StripeModule } from 'stripe-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +39,12 @@ import { CommunityComponent } from './community/community.component';
 import { StaffMenuComponent } from './staff-menu/staff-menu.component';
 import { ConfirmUserComponent } from './confirm-user/confirm-user.component';
 import { AnnounceComponent } from './announce/announce.component';
+import { ShopComponent } from './shop/shop.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SectionComponent } from './announce/section/section.component';
+import { JwtInterceptor } from './jwtinterceptor';
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +63,10 @@ import { AnnounceComponent } from './announce/announce.component';
     CommunityComponent,
     StaffMenuComponent,
     ConfirmUserComponent,
-    AnnounceComponent
+    AnnounceComponent,
+    ShopComponent,
+    ProfileComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,
@@ -77,9 +88,13 @@ import { AnnounceComponent } from './announce/announce.component';
     MatBadgeModule,
     MatSnackBarModule,
     ClipboardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule,
+    StripeModule.forRoot(environment.stripekey)
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
