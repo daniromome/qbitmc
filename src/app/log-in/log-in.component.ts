@@ -7,7 +7,6 @@ import { DataRequestService } from '../data-request.service';
 import { Router } from '@angular/router';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { first } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './log-in.component.pug',
