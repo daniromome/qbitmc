@@ -46,4 +46,4 @@ testem.log
 Thumbs.db
 .VSCodeCounter
 
-/src/environments
+/src/environments/*
