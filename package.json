@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.11",
     "ng-cli-pug-loader": "^0.2.2",
     "rxjs": "~6.5.4",
+    "stripe-angular": "^1.1.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
