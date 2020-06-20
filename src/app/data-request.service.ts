@@ -78,4 +78,12 @@ export class DataRequestService {
     return this.http.get(`https://minecraft-statistic.net/api/server/info/${environment.minecraftip}_${environment.minecraftport}`);
   }
 
+  createAnnouncement(announcementData) {
+    return this.http.post(`${environment.api}/announcement/new`, announcementData);
+  }
+
+  fetchAnnouncements() {
+    return this.http.get(`${environment.api}/announcement/fetch`);
+  }
+
 }
