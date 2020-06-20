@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApplicationFormComponent } from '../application-form/application-form.component';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from 'src/user.model';
 import { DataRequestService } from '../data-request.service';
 import { StaffMenuComponent } from '../staff-menu/staff-menu.component';
 
@@ -67,6 +66,7 @@ export class NavBarComponent implements OnInit {
       maxWidth: '22em',
       data: { snackBar: this.snackBar }
     });
+    dialogRef.afterClosed().subscribe(() => this.updateComponent());
   }
 
   ngOnInit(): void {
