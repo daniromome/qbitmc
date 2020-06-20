@@ -1,0 +1,17 @@
+h2(mat-dialog-title) Add Section
+mat-dialog-content
+  form('[formGroup]'='sectionForm')
+    div(class='column')
+      mat-form-field
+        mat-label Section Header
+        input(matInput '[formControl]'='header')
+      mat-form-field
+        mat-label Section Body
+        textarea(matInput '[formControl]'='body')
+mat-dialog-actions(align='end')
+  button(mat-icon-button mat-dialog-close)
+    mat-icon clear
+  button(*ngIf='!header.valid || !body.valid' mat-icon-button disabled)
+    mat-icon save
+  button(*ngIf='header.valid && body.valid' mat-icon-button (click)="onSubmit()")
+    mat-icon save

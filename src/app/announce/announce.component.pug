@@ -1,1 +1,27 @@
-<p>announce works!</p>
+h2(mat-dialog-title) Create a new announcement
+mat-dialog-content
+  form('[formGroup]'='announcementForm')
+    div(class='column')
+      mat-form-field
+        mat-label Title
+        input(matInput '[formControl]'='title')
+      mat-form-field
+        mat-label Image Link
+        input(matInput '[formControl]'='image')
+      mat-list(*ngIf='Sections.length > 0' class='full-width')
+        h3 Sections
+        mat-divider
+        mat-list-item(*ngFor='let item of Sections; let i = index')
+          div(class='apart')
+            p {{ item.header }}
+            button(mat-icon-button '(click)'='removeItem(i)')
+              mat-icon delete
+          mat-divider
+      button(mat-button '(click)'='addSection()') Add Section
+mat-dialog-actions(align='end')
+  button(mat-icon-button mat-dialog-close)
+    mat-icon clear
+  button(*ngIf='!announcementForm.valid' mat-icon-button disabled)
+    mat-icon save
+  button(*ngIf='announcementForm.valid' mat-icon-button (click)="onSubmit()")
+    mat-icon save
