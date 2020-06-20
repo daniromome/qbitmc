@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { DataRequestService } from '../data-request.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
