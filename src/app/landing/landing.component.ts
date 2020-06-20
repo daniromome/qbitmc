@@ -22,6 +22,7 @@ export class LandingComponent implements OnInit {
   maxPlayers: number;
   playersList: [];
 
+  announcements: object[];
   applications: object[];
 
 
@@ -69,6 +70,10 @@ export class LandingComponent implements OnInit {
 
     this.dataService.fetchApplications().subscribe((data: any) => {
       this.applications = data.result;
+    });
+
+    this.dataService.fetchAnnouncements().subscribe((data: any) => {
+      this.announcements = data.result;
     });
   }
 
