@@ -82,8 +82,8 @@ export class DataRequestService {
     return this.http.post(`${environment.api}/announcement/new`, announcementData);
   }
 
-  fetchAnnouncements() {
-    return this.http.get(`${environment.api}/announcement/fetch`);
+  fetchAnnouncements(item) {
+    return this.http.get(`${environment.api}/announcement/fetch/${item}`);
   }
 
 }
