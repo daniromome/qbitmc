@@ -19,6 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { StripeModule } from 'stripe-angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -90,6 +91,7 @@ import { environment } from 'src/environments/environment';
     ClipboardModule,
     MatExpansionModule,
     MatDividerModule,
+    MatPaginatorModule,
     StripeModule.forRoot(environment.stripekey)
   ],
   providers: [
