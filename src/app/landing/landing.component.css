@@ -10,7 +10,7 @@
   }
 
   mat-toolbar {
-    margin-top: 1rem;
+    margin: 1rem 0;
   }
 
   .a, .c {
@@ -18,6 +18,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    height: inherit;
   }
 
   .a {
@@ -29,6 +30,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: inherit;
   }
 
   .c {
@@ -44,7 +46,14 @@
   .c > mat-card {
     width: 80%;
     overflow-y: auto;
-    max-height: 45%;
+    max-height: 40%;
+  }
+
+  .content {
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 
 }
@@ -76,6 +85,13 @@
     margin-top: 1rem;
   }
 
+  .content {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
 }
 
 .header-image {
@@ -83,6 +99,16 @@
   background-size: cover;
 }
 
-.b > mat-card {
-  height: 80%;
+.announcement {
+  overflow-y: auto;
+  max-height: 50em;
+}
+
+p {
+  text-align: justify;
+  padding: 0em 1em;
+}
+
+h3 {
+  text-align: center;
 }

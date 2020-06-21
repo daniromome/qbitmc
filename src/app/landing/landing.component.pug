@@ -1,13 +1,21 @@
 div(class='basic-grid')
   div(class='b')
-    mat-toolbar(color='primary' '[class.mat-elevation-z1]'="true") Announcement Board
-    div(class='full-width')
+    mat-toolbar(color='primary' '[class.mat-elevation-z2]'="true") Announcement Board
+    div(class='announcement' '[class.mat-elevation-z2]'="true")
       mat-card
         mat-card-header
-          mat-card-title
-          mat-card-subtitle
+          div(mat-card-avatar)
+            img(src='https://minotar.net/helm/{{announcement[0].Author}}/40.png')
+          mat-card-title {{ announcement[0].Title }}
+          mat-card-subtitle Author: {{ announcement[0].Author }}
+        img(mat-card-image src="{{announcement[0].Image}}")
         mat-card-content
+          div(class='content')
+            div(*ngFor='let content of announcement[0].Content' class='full-width')
+              h3 {{ content.Header }}
+              p {{ content.Body }}
         mat-card-footer
+          mat-paginator('[length]'='announcementCount' '[pageSize]'='1' '(page)'='changeAnnouncement($event)')
   div(class='a')
     mat-card
       mat-card-header

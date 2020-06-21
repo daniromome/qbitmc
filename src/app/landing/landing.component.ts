@@ -22,8 +22,9 @@ export class LandingComponent implements OnInit {
   maxPlayers: number;
   playersList: [];
 
-  announcements: object[];
+  announcement: object;
   applications: object[];
+  announcementCount = 0;
 
 
   constructor(
@@ -72,8 +73,9 @@ export class LandingComponent implements OnInit {
       this.applications = data.result;
     });
 
-    this.dataService.fetchAnnouncements().subscribe((data: any) => {
-      this.announcements = data.result;
+    this.dataService.fetchAnnouncements(this.announcementCount).subscribe((data: any) => {
+      this.announcement = data.result;
+      this.announcementCount = data.count;
     });
   }
 
@@ -81,6 +83,13 @@ export class LandingComponent implements OnInit {
     this.dialog.open(ApplicationFormComponent, {
       height: '51em',
       width: '42em',
+    });
+  }
+
+  changeAnnouncement(event) {
+    this.dataService.fetchAnnouncements(event.pageIndex).subscribe((data: any) => {
+      this.announcement = data.result;
+      this.announcementCount = data.count;
     });
   }
 
